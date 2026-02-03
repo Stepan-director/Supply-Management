@@ -1,13 +1,7 @@
 package com.example.Supply_Management.service;
 
-import com.example.Supply_Management.model.Delivery;
-import com.example.Supply_Management.model.DeliveryProduct;
-import com.example.Supply_Management.model.Supplier;
-import com.example.Supply_Management.model.SupplierProduct;
-import com.example.Supply_Management.repository.DeliveryProductRepository;
-import com.example.Supply_Management.repository.DeliveryRepository;
-import com.example.Supply_Management.repository.SupplierProductRepository;
-import com.example.Supply_Management.repository.SupplierRepository;
+import com.example.Supply_Management.model.*;
+import com.example.Supply_Management.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +22,12 @@ public class DeliveryService {
 
     @Autowired
     private SupplierProductRepository supplierProductRepository;
+
+    @Autowired
+    private WarehouseRepository warehouseRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
 
     public Delivery createDelivery(Long supplierId){
         Supplier supplier = supplierRepository.findById(supplierId)
@@ -100,5 +100,24 @@ public class DeliveryService {
         deliveryRepository.delete(delivery);
     }
 
+
+    public void acceptedDelivery(Long deliveryId) {
+        List<DeliveryProduct> deliveryProducts = deliveryProductRepository.findByDeliveryId(deliveryId);
+
+        for (DeliveryProduct dp : deliveryProducts) {
+            Product product = productRepository.findById(dp.getProductId())
+                    .orElseThrow(() -> new RuntimeException("Товар не найден"));
+
+            Warehouse warehouse = new Warehouse();
+            warehouse.setProductId(dp.getProductId());
+            warehouse.setProductName(product.getName());       // ← заполняем
+            warehouse.setProductType(product.getType());       // ← заполняем
+            warehouse.setVariety(product.getVariety());        // ← заполняем
+            warehouse.setQuantity(dp.getQuantity());
+            warehouse.setMeasureUnit("кг");                    // ← заполняем
+
+            warehouseRepository.save(warehouse);
+        }
+    }
 
 }

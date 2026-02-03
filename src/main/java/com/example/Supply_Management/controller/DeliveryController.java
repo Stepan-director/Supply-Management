@@ -51,4 +51,8 @@ public class DeliveryController {
         return deliveryService.addProductDelivery(deliveryId, productId, quantity);
     }
 
+    @PostMapping("/{deliveryId}/accept")
+    public void acceptDelivery(@PathVariable Long deliveryId) {
+        deliveryService.acceptedDelivery(deliveryId);
+    }
 }
