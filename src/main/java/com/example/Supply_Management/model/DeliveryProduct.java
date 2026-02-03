@@ -3,7 +3,7 @@ package com.example.Supply_Management.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "delivery_item")
+@Table(name = "delivery_product")
 public class DeliveryProduct {
 
     @Id
@@ -16,14 +16,14 @@ public class DeliveryProduct {
     @Column(name = "product_id")
     private Long productId;
 
-    private double quantity;
+    private Double  quantity;
 
-    private double price;
+    private Double  price;
 
     @Column(name = "total_amount")
     private double totalAmount;
 
-    public DeliveryProduct(Long id, Long deliveryId, Long productId, double quantity, double price, double totalAmount) {
+    public DeliveryProduct(Long id, Long deliveryId, Long productId, Double  quantity, Double  price, Double  totalAmount) {
         this.id = id;
         this.deliveryId = deliveryId;
         this.productId = productId;
@@ -59,27 +59,27 @@ public class DeliveryProduct {
         this.productId = productId;
     }
 
-    public double getQuantity() {
+    public Double  getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(double quantity) {
+    public void setQuantity(Double  quantity) {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
+    public Double  getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double  price) {
         this.price = price;
     }
 
-    public double getTotalAmount() {
+    public Double  getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(double totalAmount) {
+    public void setTotalAmount(Double  totalAmount) {
         this.totalAmount = totalAmount;
     }
 }

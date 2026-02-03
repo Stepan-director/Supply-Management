@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/supplier")
+@RestController
+@RequestMapping("/supplier")
 public class SupplierController {
 
     @Autowired
@@ -18,27 +19,27 @@ public class SupplierController {
     @Autowired
     private SupplierRepository supplierRepository;
 
-    @PostMapping("/create")
+    @PostMapping("/create") // +
     public Supplier createSupplier(@RequestBody Supplier supplier){
         return service.createSupplier(supplier.getName(), supplier.getPhone());
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/getAll") // +
     public List<Supplier> getAllSuppliers(){
         return service.getAllSuppliers();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // +
     public Supplier getSupplierById(@PathVariable Long id) {
         return service.getSupplierById(id);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/update") // +
     public Supplier updateSupplier(@RequestBody Supplier supplier){
         return service.updateSupplier(supplier.getId(),supplier.getName(), supplier.getPhone());
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}") // +
     public void deleteSupplier(@PathVariable Long id){
         service.deleteSupplier(id);
     }

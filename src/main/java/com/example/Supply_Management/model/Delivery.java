@@ -21,11 +21,11 @@ public class Delivery {
     @Column(name = "delivery_date")
     private LocalDate deliveryDate;
 
-    private double amount;
+    private Double  amount;
 
     private String status;
 
-    public Delivery(Long id, Long supplierId, String supplierName, LocalDate deliveryDate, double amount, String status) {
+    public Delivery(Long id, Long supplierId, String supplierName, LocalDate deliveryDate, Double  amount, String status) {
         this.id = id;
         this.supplierId = supplierId;
         this.supplierName = supplierName;
@@ -69,11 +69,11 @@ public class Delivery {
         this.deliveryDate = deliveryDate;
     }
 
-    public double getAmount() {
+    public Double  getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(Double  amount) {
         this.amount = amount;
     }
 

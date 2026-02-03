@@ -43,12 +43,12 @@ public class DeliveryService {
         return deliveryRepository.save(delivery);
     }
 
-    public DeliveryProduct addProductDelivery(Long deliveryId, Long productId, double quantity) {
+    public DeliveryProduct addProductDelivery(Long deliveryId, Long productId, Double  quantity) {
 
         Delivery delivery = deliveryRepository.findById(deliveryId)
                 .orElseThrow(() -> new RuntimeException("Не удалось найти поставку с данным ID " + deliveryId));
 
-        SupplierProduct price = supplierProductRepository.findBySupplierAndProductId(delivery.getSupplierId(), productId)
+        SupplierProduct price = supplierProductRepository.findBySupplierIdAndProductId(delivery.getSupplierId(), productId)
                 .orElseThrow(() -> new RuntimeException("У поставщика нет товара  с данным ID " + productId));
 
         double endPrice = price.getPrice();

@@ -26,12 +26,12 @@ public class SupplierProduct {
 
     private String variety;
 
-    private double price;
+    private Double  price;
 
     @Column(name = "measure_unit")
     private String measureUnit = "кг";
 
-    public SupplierProduct(Long id, Long supplierId, String supplierName, Long productId, String productName, String productType, String variety, double price, String measureUnit) {
+    public SupplierProduct(Long id, Long supplierId, String supplierName, Long productId, String productName, String productType, String variety, Double  price, String measureUnit) {
         this.id = id;
         this.supplierId = supplierId;
         this.supplierName = supplierName;
@@ -102,11 +102,11 @@ public class SupplierProduct {
         this.variety = variety;
     }
 
-    public double getPrice() {
+    public Double  getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double  price) {
         this.price = price;
     }
 

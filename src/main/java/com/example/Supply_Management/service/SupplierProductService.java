@@ -23,7 +23,7 @@ public class SupplierProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public SupplierProduct addProductToSupplier(Long supplierId, Long productId, double price) {
+    public SupplierProduct addProductToSupplier(Long supplierId, Long productId, Double  price) {
         Supplier supplier = supplierRepository.findById(supplierId).orElseThrow(()
                 -> new RuntimeException("Не удалось найти поставщика с данным ID " + supplierId));
 
@@ -55,7 +55,7 @@ public class SupplierProductService {
 
     }*/
 
-    public SupplierProduct updatePrice(Long id, double newPrice) {
+    public SupplierProduct updatePrice(Long id, Double  newPrice) {
         SupplierProduct supplierProduct = supplierProductRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Запись о цене не найдена"));
 
