@@ -14,9 +14,8 @@ public class SupplierService {
     @Autowired
     private SupplierRepository supplierRepository;
 
-    public Supplier createSupplier(String name, String phone){ // создаём поставщика
+    public Supplier createSupplier(String name, String phone){
         Supplier supplier = new Supplier();
-
 
         supplier.setName(name);
         supplier.setPhone(phone);
@@ -24,13 +23,13 @@ public class SupplierService {
         return  supplierRepository.save(supplier);
     }
 
-    public List<Supplier> getAllSuppliers(){ // поиск всех поставщиков
+    public List<Supplier> getAllSuppliers(){
         return supplierRepository.findAll();
     }
 
-    public void getSupplierById(Long id){
-        Supplier supplier = supplierRepository.findById(id).orElseThrow(()
-                -> new RuntimeException("Не удалось найти поставщика с данным ID " + id));
+    public Supplier getSupplierById(Long id){
+        return supplierRepository.findById(id).orElseThrow(()
+                -> new RuntimeException("Не найден поставщик с ID: " + id));
     }
 
     public Supplier updateSupplier(Long id, String name, String phone){

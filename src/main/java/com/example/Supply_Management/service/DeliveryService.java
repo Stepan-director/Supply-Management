@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class DeliveryService {
@@ -45,11 +46,10 @@ public class DeliveryService {
     public DeliveryProduct addProductDelivery(Long deliveryId, Long productId, double quantity) {
 
         Delivery delivery = deliveryRepository.findById(deliveryId)
-                .orElseThrow(() -> new RuntimeException("Не удалось найти поставку с данным ID " + ));
+                .orElseThrow(() -> new RuntimeException("Не удалось найти поставку с данным ID " + deliveryId));
 
-        SupplierProduct price = supplierProductRepository
-                .findBySupplierIdAndProductId(delivery.getSupplierId(), productId)
-                .orElseThrow(() -> new RuntimeException("У поставщика нет этого товара"));
+        SupplierProduct price = supplierProductRepository.findBySupplierAndProductId(delivery.getSupplierId(), productId)
+                .orElseThrow(() -> new RuntimeException("У поставщика нет товара  с данным ID " + productId));
 
         double endPrice = price.getPrice();
 
@@ -70,5 +70,35 @@ public class DeliveryService {
 
         return saved;
     }
+
+    public Delivery confirmDelivery(Long id){
+        Delivery delivery = deliveryRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Не удалось найти поставку с данным ID " + id));
+
+        delivery.setStatus("Подтверждена");
+
+        return deliveryRepository.save(delivery);
+    }
+
+    public List<Delivery> getAllDelivery(){
+        return deliveryRepository.findAll();
+    }
+
+    public Delivery cancelDelivery(Long id){
+        Delivery delivery = deliveryRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Не удалось найти поставку с данным ID " + id));
+
+        delivery.setStatus("Отменена");
+
+        return deliveryRepository.save(delivery);
+    }
+
+    public void deleteDelivery(Long id){
+        Delivery delivery = deliveryRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Не удалось найти поставку с данным ID " + id));
+
+        deliveryRepository.delete(delivery);
+    }
+
 
 }

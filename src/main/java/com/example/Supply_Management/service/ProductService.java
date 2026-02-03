@@ -34,8 +34,4 @@ public class ProductService {
     public List<Product> searchProducts(String name){
         return productRepository.findByName(name);
     }
-
-
-
-
 }
