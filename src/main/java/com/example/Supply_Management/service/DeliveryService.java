@@ -110,11 +110,11 @@ public class DeliveryService {
 
             Warehouse warehouse = new Warehouse();
             warehouse.setProductId(dp.getProductId());
-            warehouse.setProductName(product.getName());       // ← заполняем
-            warehouse.setProductType(product.getType());       // ← заполняем
-            warehouse.setVariety(product.getVariety());        // ← заполняем
+            warehouse.setProductName(product.getName());
+            warehouse.setProductType(product.getType());
+            warehouse.setVariety(product.getVariety());
             warehouse.setQuantity(dp.getQuantity());
-            warehouse.setMeasureUnit("кг");                    // ← заполняем
+            warehouse.setMeasureUnit("кг");
 
             warehouseRepository.save(warehouse);
         }
