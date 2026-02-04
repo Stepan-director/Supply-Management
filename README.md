@@ -63,6 +63,7 @@ http://localhost:8080/delivery/1/items
 { "productId": 1, "quantity": 4 }
 
 http://localhost:8080/delivery/1/accept (после этого метода заполняется таблица со складом, над ним не особо работал - не удалить, не добавить через котнроллер)
+
 !!! ReportController !!!
 
 http://localhost:8080/reports?startDate=2026-02-03&endDate=2026-02-04
