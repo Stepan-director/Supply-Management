@@ -10,7 +10,7 @@ create table delivery_product ( id BIGSERIAL PRIMARY KEY, delivery_id bigint, pr
 
 create table supplier_products ( id BIGSERIAL PRIMARY KEY, supplier_id bigint, supplier_name varchar(255), product_id BIGINT, product_name varchar(255), product_type varchar(255), variety varchar(255), price DOUBLE PRECISION, measure_unit varchar(50) default 'кг' );
 
-create table warehouse ( id BIGSERIAL PRIMARY KEY, product_id bigint not null, product_name varchar(255), product_type varchar(100), variety varchar(100), quantity DOUBLE PRECISION not null, measure_unit varchar(50) default 'кг' );
+create table warehouse ( id BIGSERIAL PRIMARY KEY, product_id bigint not null, product_name varchar(255), product_type varchar(100), variety varchar(100), quantity DOUBLE PRECISION not null, measure_unit varchar(50) default 'кг', received_date date not null default current_date );
 
 ДЛЯ ТЕСТОВ В POSTMANE или где удобно
 
