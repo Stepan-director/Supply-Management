@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Service
-public class RepostService {
+public class ReportService {
 
     @Autowired
     private WarehouseRepository warehouseRepository;
