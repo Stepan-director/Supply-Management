@@ -9,7 +9,7 @@ public class ReportDTO {
 
     private List<Map<String, Object>> data = new ArrayList<>();
 
-    // Добавить запись в отчет
+  
     public void addRecord(String supplier, String product, double weight, double cost) {
         Map<String, Object> record = new HashMap<>();
         record.put("Поставщик", supplier);
