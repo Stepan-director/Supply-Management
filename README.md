@@ -1,4 +1,5 @@
 !!! ЕСЛИ СОБИРАЕТЕСЬ ТЕСТИРОВАТЬ, А Я НЕ ЗНАЮ, КАК ВЫ ЭТО ДЕЛАЕТЕ, ТО, НА ВСЯКИЙ СЛУЧАЙ, ДЛЯ УПРОЩЕНИЯ ВАШЕЙ РАБОТЫ МОЖЕТЕ ТЕСТИТЬ КОПИПАСТОМ ))) !!!
+!!! ПРИ СОЗДАНИИ ОТЧЁТА(REPORT SERVICE) ВОЗНИКЛИ ТРУДНОСТИ, ЛОГИКУ ПРОДУМАЛ САМ, ВОСПОЛЬЗОВАЛСЯ ИИ ВО ВРЕМЯ РЕАЛИЗАЦИИ !!! 
 
 create table delivery ( id BIGSERIAL PRIMARY KEY, supplier_id bigint, supplier_name varchar(255), delivery_date date, amount DOUBLE PRECISION, status varchar(255) );
 
