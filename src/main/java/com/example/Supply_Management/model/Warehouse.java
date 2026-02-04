@@ -3,6 +3,8 @@ package com.example.Supply_Management.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 public class Warehouse {
 
@@ -28,7 +30,10 @@ public class Warehouse {
     @Column(name = "measure_unit")
     private String measureUnit = "кг";
 
-    public Warehouse(Long id, Long productId, String productName, String productType, String variety, Double quantity, String measureUnit) {
+    @Column(name = "received_date", nullable = false)
+    private LocalDate receivedDate;
+
+    public Warehouse(Long id, Long productId, String productName, String productType, String variety, Double quantity, String measureUnit, LocalDate receivedDate) {
         this.id = id;
         this.productId = productId;
         this.productName = productName;
@@ -36,6 +41,7 @@ public class Warehouse {
         this.variety = variety;
         this.quantity = quantity;
         this.measureUnit = measureUnit;
+        this.receivedDate = receivedDate;
     }
 
     public Warehouse() {
@@ -95,5 +101,13 @@ public class Warehouse {
 
     public void setMeasureUnit(String measureUnit) {
         this.measureUnit = measureUnit;
+    }
+
+    public LocalDate getReceivedDate() {
+        return receivedDate;
+    }
+
+    public void setReceivedDate(LocalDate receivedDate) {
+        this.receivedDate = receivedDate;
     }
 }

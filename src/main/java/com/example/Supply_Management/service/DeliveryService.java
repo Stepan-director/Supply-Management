@@ -104,6 +104,11 @@ public class DeliveryService {
     public void acceptedDelivery(Long deliveryId) {
         List<DeliveryProduct> deliveryProducts = deliveryProductRepository.findByDeliveryId(deliveryId);
 
+        Delivery delivery = deliveryRepository.findById(deliveryId)
+                .orElseThrow(() -> new RuntimeException("Поставка не найдена"));
+
+        LocalDate receivedDate = delivery.getDeliveryDate() != null ? delivery.getDeliveryDate() : LocalDate.now();
+
         for (DeliveryProduct dp : deliveryProducts) {
             Product product = productRepository.findById(dp.getProductId())
                     .orElseThrow(() -> new RuntimeException("Товар не найден"));
@@ -115,6 +120,7 @@ public class DeliveryService {
             warehouse.setVariety(product.getVariety());
             warehouse.setQuantity(dp.getQuantity());
             warehouse.setMeasureUnit("кг");
+            warehouse.setReceivedDate(receivedDate);
 
             warehouseRepository.save(warehouse);
         }
