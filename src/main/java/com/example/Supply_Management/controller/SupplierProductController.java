@@ -44,20 +44,4 @@ public class SupplierProductController {
         return service.updatePrice(supplierProduct.getId(), supplierProduct.getPrice());
     }
 
-    @GetMapping("/debug-check")
-    public String debugCheck() {
-        List<SupplierProduct> all = repository.findAll();
-
-        String result = "Всего записей в supplier_products: " + all.size() + "\n\n";
-
-        for (SupplierProduct sp : all) {
-            result += String.format(
-                    "ID: %d, supplier_id: %d, product_id: %d, product_name: %s, price: %.2f\n",
-                    sp.getId(), sp.getSupplierId(), sp.getProductId(),
-                    sp.getProductName(), sp.getPrice()
-            );
-        }
-
-        return result;
-    }
 }
